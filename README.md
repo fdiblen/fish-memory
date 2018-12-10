@@ -5,3 +5,9 @@ Tips &amp; Tricks to help my fish memory and not to google the same stuff over a
 ```
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 ```
+
+# Xterm
+Start xterm with a proper font.
+```
+xterm -fa 'Monospace' -fs 15
+```
