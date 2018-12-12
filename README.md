@@ -16,9 +16,8 @@ xterm -fa 'Monospace' -fs 15
 ```
 sudo ufw enable
 sudo ufw default deny
-sudo ufw allow 443/tcp
-sudo ufw allow 1725/udp
 sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
 sudo ufw allow 22
 sudo ufw logging on
 sudo ufw status
