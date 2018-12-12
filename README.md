@@ -11,3 +11,16 @@ Start xterm with a proper font.
 ```
 xterm -fa 'Monospace' -fs 15
 ```
+
+# UFW
+```
+sudo ufw enable
+sudo ufw allow https/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 1725/udp
+sudo ufw allow http/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 22
+sudo ufw status
+sudo ufw logging on
+```
