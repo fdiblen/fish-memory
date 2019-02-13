@@ -1,5 +1,34 @@
 Tips &amp; Tricks to help my fish memory and not to google the same stuff over and over again
 
+
+# Python
+
+## Pyenv (Archlinux)
+```
+yay -S pyenv
+pyenv install --list
+pyenv install 3.7.2
+pyenv global 3.7.2
+pip install --upgrade pip
+```
+
+## Virtual environment
+### venv
+```
+python3 -m venv .venv
+. .venv/bin/activate.fish # fish shell
+```
+
+### pipenv
+```
+pip install -U pipenv
+cd my_project
+pipenv install
+```
+[Quick tutorial](https://hackernoon.com/reaching-python-development-nirvana-bb5692adf30c?gi=1588ba978f78)
+
+
+
 # GNOME
 ## Set Nautilus as default file manager
 ```
