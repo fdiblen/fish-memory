@@ -1,5 +1,11 @@
 Tips &amp; Tricks to help my fish memory and not to google the same stuff over and over again
-
+# Git
+## Merge branches
+```
+git checkout master
+git merge dev
+git push origin master
+```
 
 # Python
 
