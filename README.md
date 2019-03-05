@@ -7,6 +7,11 @@ git merge dev
 git push origin master
 ```
 
+## Push to different remote branch
+```
+git push origin master:newBranch
+```
+
 # Python
 
 ## Pyenv (Archlinux)
