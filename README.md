@@ -23,6 +23,18 @@ git checkout dev -- package.json
 ```
 
 
+## Remove folder from entire git history
+
+```
+git filter-branch -f --tree-filter "rm -rf FOLDERNAME" --prune-empty HEAD
+git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
+echo FOLDERNAME/ >> .gitignore
+git add .gitignore
+git commit -m "Removing FOLDERNAME from git history"
+git gc
+git push origin master --force
+```
+
 
 # Python
 
