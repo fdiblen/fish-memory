@@ -12,6 +12,18 @@ git push origin master
 git push origin master:newBranch
 ```
 
+## Fetch a file/folder from diffrent branch
+```
+git checkout <branch_name> -- <paths>
+```
+
+To get package.json from dev branch to current branch:
+```
+git checkout dev -- package.json
+```
+
+
+
 # Python
 
 ## Pyenv (Archlinux)
