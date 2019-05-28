@@ -36,6 +36,57 @@ git push origin master --force
 ```
 
 
+# Docker
+
+## Run GUI apps
+
+```
+xhost +si:localuser:root
+```
+
+```
+docker run --rm -it --net=host \
+--privileged \
+-e DISPLAY \
+--device /dev/dri \
+--device /dev/snd \
+--device /dev/video0 \
+--device /dev/input \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-v /etc/localtime:/etc/localtime:ro \
+-v $(pwd):/app \
+ubuntu /bin/bash
+```
+
+## NVIDIA
+
+### NVIDIA devices
+```
+docker run --rm -ti --runtime=nvidia nvidia/cuda nvidia-smi
+```
+
+### PyTorch
+```
+docker run -it --rm --runtime=nvidia --shm-size=1g -e NVIDIA_VISIBLE_DEVICES=0,1 nvcr.io/nvidia/pytorch
+```
+
+### Tensorflow
+```
+docker run \
+    --runtime=nvidia \
+    --rm \
+    -ti \
+    -v "${PWD}:/app" \
+    gcr.io/tensorflow/tensorflow:latest-gpu \
+    python /app/benchmark.py cpu 10000
+```
+
+### OpenGL
+xhost +si:localuser:root
+docker run --runtime=nvidia -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix nvcr.io/nvidia/pytorch
+
+
+
 # Python
 
 ## Pyenv (Archlinux)
