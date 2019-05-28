@@ -86,6 +86,31 @@ xhost +si:localuser:root
 docker run --runtime=nvidia -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix nvcr.io/nvidia/pytorch
 
 
+# Deployment
+
+## Heroku
+
+docker build --network=host -t spot .
+
+### New image
+
+npm install -g heroku
+heroku login
+heroku container:login
+heroku create
+heroku container:push spot
+heroku container:release spot
+heroku open
+
+### Exisiting image
+
+#docker tag <image> registry.heroku.com/<app>/<process-type>
+docker tag nlesc/spot registry.heroku.com/nlesc-spot/dev   
+#docker push registry.heroku.com/<app>/<process-type>
+docker push registry.heroku.com/nlesc-spot/dev
+
+
+
 
 # Python
 
