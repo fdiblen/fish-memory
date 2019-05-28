@@ -105,8 +105,11 @@ heroku open
 ### Exisiting image
 
 #docker tag <image> registry.heroku.com/<app>/<process-type>
+
 docker tag nlesc/spot registry.heroku.com/nlesc-spot/dev   
+
 #docker push registry.heroku.com/<app>/<process-type>
+
 docker push registry.heroku.com/nlesc-spot/dev
 
 
