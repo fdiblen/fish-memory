@@ -58,6 +58,11 @@ docker run --rm -it --net=host \
 ubuntu /bin/bash
 ```
 
+## Linux USB disk
+```
+dd bs=4M if=path/to/distro.iso of=/dev/sdx status=progress oflag=sync
+```
+
 ## NVIDIA
 
 ### NVIDIA devices
