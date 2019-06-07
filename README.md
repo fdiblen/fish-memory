@@ -35,6 +35,10 @@ git gc
 git push origin master --force
 ```
 
+# SSH(FS)
+```
+sshfs -p 22 -C -o follow_symlinks,auto_cache,reconnect ~/MOUNT_FOLDER USERNAME@SERVERIP:/home/USERNAME
+```
 
 # Docker
 
