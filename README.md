@@ -36,9 +36,19 @@ git push origin master --force
 ```
 
 # SSH(FS)
+
+## Mounting a remote system:
+
 ```
 sshfs -p 22 -C -o follow_symlinks,auto_cache,reconnect ~/MOUNT_FOLDER USERNAME@SERVERIP:/home/USERNAME
 ```
+
+## Save ssh passphrase in (gnome)keyring
+
+```
+/usr/lib/seahorse/ssh-askpass ~/.ssh/id_rsa
+```
+
 
 # Docker
 
