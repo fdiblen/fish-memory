@@ -167,6 +167,12 @@ pipenv install
 ```
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 ```
+## add Desktop bookmark to nautilus (files)
+```
+gsettings set org.gnome.desktop.background show-desktop-icons true
+gsettings set org.gnome.desktop.background draw-background true
+```
+
 
 # Xterm
 Start xterm with a proper font.
