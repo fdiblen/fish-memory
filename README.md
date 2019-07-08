@@ -150,6 +150,8 @@ pip install --upgrade pip
 ```
 python3 -m venv .venv
 . .venv/bin/activate.fish # fish shell
+. .venv/bin/activate # bash
+pip install --upgrade pip
 ```
 
 ### pipenv
