@@ -42,6 +42,20 @@ git config --global commit.gpgsign true
 git config --global gpg.program gpg
 ```
 
+## GPG
+
+List keys:
+```bash
+gpg --list-secret-keys --keyid-format LONG
+```
+
+Export key:
+
+```bash
+gpg --armor --export 189ABH19KLDU83
+```
+
+
 # SSH(FS)
 
 ## Mounting a remote system:
