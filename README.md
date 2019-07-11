@@ -1,31 +1,31 @@
 Tips &amp; Tricks to help my fish memory and not to google the same stuff over and over again
 # Git
 ## Merge branches
-```
+```bash
 git checkout master
 git merge dev
 git push origin master
 ```
 
 ## Push to different remote branch
-```
+```bash
 git push origin master:newBranch
 ```
 
 ## Fetch a file/folder from diffrent branch
-```
+```bash
 git checkout <branch_name> -- <paths>
 ```
 
 To get package.json from dev branch to current branch:
-```
+```bash
 git checkout dev -- package.json
 ```
 
 
 ## Remove folder from entire git history
 
-```
+```bash
 git filter-branch -f --tree-filter "rm -rf FOLDERNAME" --prune-empty HEAD
 git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
 echo FOLDERNAME/ >> .gitignore
@@ -39,13 +39,19 @@ git push origin master --force
 
 ## Mounting a remote system:
 
-```
+```bash
 sshfs -p 22 -C -o follow_symlinks,auto_cache,reconnect ~/MOUNT_FOLDER USERNAME@SERVERIP:/home/USERNAME
 ```
 
 ## Save ssh passphrase in (gnome)keyring
 
+Install seahorse
+
+```bash
+sudo pacman -S seahorse
 ```
+
+```bash
 /usr/lib/seahorse/ssh-askpass ~/.ssh/id_rsa
 ```
 
@@ -54,11 +60,11 @@ sshfs -p 22 -C -o follow_symlinks,auto_cache,reconnect ~/MOUNT_FOLDER USERNAME@S
 
 ## Run GUI apps
 
-```
+```bash
 xhost +si:localuser:root
 ```
 
-```
+```bash
 docker run --rm -it --net=host \
 --privileged \
 -e DISPLAY \
@@ -73,24 +79,28 @@ ubuntu /bin/bash
 ```
 
 ## Linux USB disk
-```
+
+```bash
 dd bs=4M if=path/to/distro.iso of=/dev/sdx status=progress oflag=sync
 ```
 
 ## NVIDIA
 
 ### NVIDIA devices
-```
+
+```bash
 docker run --rm -ti --runtime=nvidia nvidia/cuda nvidia-smi
 ```
 
 ### PyTorch
-```
+
+```bash
 docker run -it --rm --runtime=nvidia --shm-size=1g -e NVIDIA_VISIBLE_DEVICES=0,1 nvcr.io/nvidia/pytorch
 ```
 
 ### Tensorflow
-```
+
+```bash
 docker run \
     --runtime=nvidia \
     --rm \
@@ -101,18 +111,23 @@ docker run \
 ```
 
 ### OpenGL
+
+```bash
 xhost +si:localuser:root
 docker run --runtime=nvidia -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix nvcr.io/nvidia/pytorch
-
+```
 
 # Deployment
 
 ## Heroku
 
+```bash
 docker build --network=host -t spot .
+```
 
 ### New image
 
+```bash
 npm install -g heroku
 heroku login
 heroku container:login
@@ -120,6 +135,7 @@ heroku create
 heroku container:push spot
 heroku container:release spot
 heroku open
+```
 
 ### Exisiting image
 
@@ -137,7 +153,8 @@ docker push registry.heroku.com/nlesc-spot/dev
 # Python
 
 ## Pyenv (Archlinux)
-```
+
+```bash
 yay -S pyenv
 pyenv install --list
 pyenv install 3.7.2
@@ -147,7 +164,8 @@ pip install --upgrade pip
 
 ## Virtual environment
 ### venv
-```
+
+```bash
 python3 -m venv .venv
 . .venv/bin/activate.fish # fish shell
 . .venv/bin/activate # bash
@@ -155,35 +173,39 @@ pip install --upgrade pip
 ```
 
 ### pipenv
-```
+
+```bash
 pip install -U pipenv
 cd my_project
 pipenv install
 ```
 [Quick tutorial](https://hackernoon.com/reaching-python-development-nirvana-bb5692adf30c?gi=1588ba978f78)
 
-
-
 # GNOME
 ## Set Nautilus as default file manager
-```
+
+```bash
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 ```
+
 ## add Desktop bookmark to nautilus (files)
-```
+
+```bash
 gsettings set org.gnome.desktop.background show-desktop-icons true
 gsettings set org.gnome.desktop.background draw-background true
 ```
 
-
 # Xterm
+
 Start xterm with a proper font.
-```
+
+```bash
 xterm -fa 'Monospace' -fs 15
 ```
 
 # UFW
-```
+
+```bash
 sudo ufw enable
 sudo ufw default deny
 sudo ufw allow 80/tcp
