@@ -22,7 +22,6 @@ To get package.json from dev branch to current branch:
 git checkout dev -- package.json
 ```
 
-
 ## Remove folder from entire git history
 
 ```bash
@@ -33,6 +32,14 @@ git add .gitignore
 git commit -m "Removing FOLDERNAME from git history"
 git gc
 git push origin master --force
+```
+
+## Sign commits by default
+
+```bash
+git config --global user.signingkey <YOUR_SIGNING_KEY>
+git config --global commit.gpgsign true
+git config --global gpg.program gpg
 ```
 
 # SSH(FS)
