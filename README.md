@@ -76,6 +76,20 @@ sudo pacman -S seahorse
 /usr/lib/seahorse/ssh-askpass ~/.ssh/id_rsa
 ```
 
+## SSH password auth
+
+```bash
+user=test
+useradd -m -d /home/$user -s /bin/bash $user
+ssh-keygen -b 2048 -t rsa -f ./$user'_sshkey' -q -N ""
+mkdir -p /home/$user/.ssh
+chown -R $user:$user /home/$user/.ssh
+cat $user'_sshkey'.pub > /home/sarod/.ssh/authorized_keys
+mv $user'_sshkey' $user'_sshkey'.private
+chmod 600 /home/$user/.ssh/authorized_keys
+chmod 700 /home/$user/.ssh
+```
+
 
 # Docker
 
