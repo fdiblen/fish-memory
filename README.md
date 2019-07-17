@@ -82,12 +82,13 @@ sudo pacman -S seahorse
 user=test
 useradd -m -d /home/$user -s /bin/bash $user
 ssh-keygen -b 2048 -t rsa -f ./$user'_sshkey' -q -N ""
-mkdir -p /home/$user/.ssh
-chown -R $user:$user /home/$user/.ssh
-cat $user'_sshkey'.pub > /home/sarod/.ssh/authorized_keys
 mv $user'_sshkey' $user'_sshkey'.private
+mkdir -p /home/$user/.ssh
+cat $user'_sshkey'.pub > /home/$user/.ssh/authorized_keys
+chown -R $user:$user /home/$user/.ssh
 chmod 600 /home/$user/.ssh/authorized_keys
 chmod 700 /home/$user/.ssh
+cat $user'_sshkey'.private
 ```
 
 
