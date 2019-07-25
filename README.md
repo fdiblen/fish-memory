@@ -23,10 +23,15 @@ git checkout dev -- package.json
 ```
 
 ## Commit current changes to different branch
+
 https://stackoverflow.com/questions/2944469/how-to-commit-my-current-changes-to-a-different-branch-in-git/2945904
+
+```bash
 git stash
 git checkout other-branch
 git stash pop
+```
+
 The first stash hides away your changes (basically making a temporary commit), and the subsequent stash pop re-applies them. 
 
 ## Remove folder from entire git history
