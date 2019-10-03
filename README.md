@@ -229,6 +229,11 @@ pipenv install
 ```
 [Quick tutorial](https://hackernoon.com/reaching-python-development-nirvana-bb5692adf30c?gi=1588ba978f78)
 
+### Use virtualenvironment in Visual studio code
+
+[https://code.visualstudio.com/docs/python/environments](https://code.visualstudio.com/docs/python/environments)
+
+
 # GNOME
 ## Set Nautilus as default file manager
 
