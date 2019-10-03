@@ -200,7 +200,7 @@ docker push registry.heroku.com/nlesc-spot/dev
 
 # Python
 
-## Pyenv (Archlinux)
+## Pyenv installation (Archlinux)
 
 ```bash
 yay -S pyenv
@@ -232,6 +232,13 @@ pipenv install
 ### Use virtualenvironment in Visual studio code
 
 [https://code.visualstudio.com/docs/python/environments](https://code.visualstudio.com/docs/python/environments)
+
+### Clear variable on IPython/Jupyter
+
+```python
+%reset
+%reset_selective variable_name
+```
 
 
 # GNOME
