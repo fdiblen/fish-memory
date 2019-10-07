@@ -251,7 +251,7 @@ conda create -n nso python=3.7 pandas
 Export environment 
 
 ```
-conda env export -c conda-forge | grep -v "^prefix: "  > environment.yml
+conda env export -c conda-forge -n nso --override-channels | grep -v "^prefix: "  > environment.yml
 ```
 
 List environments
