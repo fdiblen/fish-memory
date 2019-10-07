@@ -240,6 +240,44 @@ pipenv install
 %reset_selective variable_name
 ```
 
+### Anaconda
+
+Create an environment
+
+```
+conda create -n nso python=3.7 pandas
+```
+
+Export environment 
+
+```
+conda env export -c conda-forge | grep -v "^prefix: "  > environment.yml
+```
+
+List environments
+
+```
+conda env list
+```
+
+Create an environment from a file
+
+```
+conda env create -f environment.yml
+```
+
+Deactivate an environment
+
+```
+conda deactivate
+```
+
+Remove the environment
+
+```
+conda env remove -n nso
+```
+
 
 # GNOME
 ## Set Nautilus as default file manager
