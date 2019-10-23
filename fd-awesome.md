@@ -9,6 +9,7 @@ https://github.com/ddol/caravel
 https://github.com/elastic/kibana
 
 https://github.com/CartoDB/cartodb
+https://github.com/sverhoeven/docker-cartodb
 
 https://github.com/omnisci/mapd-charting
 
@@ -16,6 +17,9 @@ https://github.com/vaexio/vaex
 
 https://github.com/densitydesign/raw
 
+https://github.com/voila-dashboards/voila
+
+https://datashader.org/
 
 ## Web frameworks
 
