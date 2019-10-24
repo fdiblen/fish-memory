@@ -245,7 +245,6 @@ pipenv install
 pip install $(pip list --outdated | awk 'NR>2 { print $1 }') --upgrade
 ```
 
-
 ### Anaconda
 
 Create an environment
@@ -282,6 +281,13 @@ Remove the environment
 
 ```
 conda env remove -n nso
+```
+
+# Nodejs
+
+## Update outdated packages
+```bash
+npm i -g npm-check-updates && ncu -u && npm i
 ```
 
 
