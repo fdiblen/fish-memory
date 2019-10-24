@@ -240,6 +240,12 @@ pipenv install
 %reset_selective variable_name
 ```
 
+### Upgrade outdated Python packages
+```bash
+pip install $(pip list --outdated | awk 'NR>2 { print $1 }') --upgrade
+```
+
+
 ### Anaconda
 
 Create an environment
