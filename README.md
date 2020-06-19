@@ -22,9 +22,7 @@ To get package.json from dev branch to current branch:
 git checkout dev -- package.json
 ```
 
-## Commit current changes to different branch
-
-https://stackoverflow.com/questions/2944469/how-to-commit-my-current-changes-to-a-different-branch-in-git/2945904
+## Commit current changes to different (existing )branch
 
 ```bash
 git stash
@@ -33,6 +31,16 @@ git stash pop
 ```
 
 The first stash hides away your changes (basically making a temporary commit), and the subsequent stash pop re-applies them. 
+
+## Commit current changes to new branch
+
+```bash
+git stash
+git checkout -b new-branch
+git stash pop
+```
+
+
 
 ## Remove folder from entire git history
 
