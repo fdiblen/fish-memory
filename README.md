@@ -209,7 +209,10 @@ docker push registry.heroku.com/nlesc-spot/dev
 # Python
 
 ## Http server
+
+```bash
 python3 -m http.server --directory ./ 8080
+```
 
 ## Pyenv installation (Archlinux)
 
