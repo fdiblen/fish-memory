@@ -1,18 +1,33 @@
-Tips &amp; Tricks to help my fish memory and not to google the same stuff over and over again
-# Git
-## Merge branches
+# Fish memory
+
+Tips &amp; Tricks to help my fish memory and not to google the same stuff over and over again.
+
+## Git
+
+### Undo last commit
+[Source](https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git)
+$ git commit -m "Something terribly misguided" # (0: Your Accident)
+$ git reset HEAD~                              # (1)
+<< edit files as necessary >>                  # (2)
+$ git add .                                    # (3)
+$ git commit -c ORIG_HEAD                      # (4)
+
+### Merge branches
+
 ```bash
 git checkout master
 git merge dev
 git push origin master
 ```
 
-## Push to different remote branch
+### Push to different remote branch
+
 ```bash
 git push origin master:newBranch
 ```
 
-## Fetch a file/folder from diffrent branch
+### Fetch a file/folder from diffrent branch
+
 ```bash
 git checkout <branch_name> -- <paths>
 ```
@@ -22,7 +37,7 @@ To get package.json from dev branch to current branch:
 git checkout dev -- package.json
 ```
 
-## Commit current changes to different (existing )branch
+### Commit current changes to different (existing )branch
 
 ```bash
 git stash
@@ -32,7 +47,7 @@ git stash pop
 
 The first stash hides away your changes (basically making a temporary commit), and the subsequent stash pop re-applies them. 
 
-## Commit current changes to new branch
+### Commit current changes to new branch
 
 ```bash
 git stash
@@ -40,9 +55,7 @@ git checkout -b new-branch
 git stash pop
 ```
 
-
-
-## Remove folder from entire git history
+### Remove folder from entire git history
 
 ```bash
 git filter-branch -f --tree-filter "rm -rf FOLDERNAME" --prune-empty HEAD
@@ -54,7 +67,7 @@ git gc
 git push origin master --force
 ```
 
-## Sign commits by default
+### Sign commits by default
 
 ```bash
 git config --global user.signingkey <YOUR_SIGNING_KEY>
@@ -64,27 +77,27 @@ git config --global gpg.program gpg
 
 ## GPG
 
-List keys:
+### List keys
+
 ```bash
 gpg --list-secret-keys --keyid-format LONG
 ```
 
-Export key:
+### Export key
 
 ```bash
 gpg --armor --export 189ABH19KLDU83
 ```
 
+## SSH(FS)
 
-# SSH(FS)
-
-## Mounting a remote system:
+### Mounting a remote system:
 
 ```bash
 sshfs -p 22 -C -o follow_symlinks,auto_cache,reconnect ~/MOUNT_FOLDER USERNAME@SERVERIP:/home/USERNAME
 ```
 
-## Save ssh passphrase in (gnome)keyring
+### Save ssh passphrase in (gnome)keyring
 
 Install seahorse
 
@@ -96,7 +109,7 @@ sudo pacman -S seahorse
 /usr/lib/seahorse/ssh-askpass ~/.ssh/id_rsa
 ```
 
-## SSH password auth
+### SSH password auth
 
 ```bash
 user=test
@@ -111,10 +124,9 @@ chmod 700 /home/$user/.ssh
 cat $user'_sshkey'.private
 ```
 
+## Docker
 
-# Docker
-
-## Run GUI apps
+### Run GUI apps
 
 ```bash
 xhost +si:localuser:root
@@ -122,25 +134,25 @@ xhost +si:localuser:root
 
 ```bash
 docker run --rm -it --net=host \
---privileged \
--e DISPLAY \
---device /dev/dri \
---device /dev/snd \
---device /dev/video0 \
---device /dev/input \
--v /tmp/.X11-unix:/tmp/.X11-unix \
--v /etc/localtime:/etc/localtime:ro \
--v $(pwd):/app \
-ubuntu /bin/bash
+    --privileged \
+    -e DISPLAY \
+    --device /dev/dri \
+    --device /dev/snd \
+    --device /dev/video0 \
+    --device /dev/input \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v $(pwd):/app \
+    ubuntu /bin/bash
 ```
 
-## Linux USB disk
+## Linux iso --> bootable USB drive
 
 ```bash
-dd bs=4M if=path/to/distro.iso of=/dev/sdx status=progress oflag=sync
+dd bs=4M if=path/to/distro.iso of=/dev/sdX status=progress oflag=sync
 ```
 
-## NVIDIA
+## GPUs
 
 ### NVIDIA devices
 
@@ -173,15 +185,15 @@ xhost +si:localuser:root
 docker run --runtime=nvidia -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix nvcr.io/nvidia/pytorch
 ```
 
-# Deployment
+## Deployment
 
-## Heroku
+### Heroku
 
 ```bash
 docker build --network=host -t spot .
 ```
 
-### New image
+#### New image
 
 ```bash
 npm install -g heroku
@@ -193,7 +205,7 @@ heroku container:release spot
 heroku open
 ```
 
-### Exisiting image
+#### Exisiting image
 
 #docker tag <image> registry.heroku.com/<app>/<process-type>
 
@@ -204,17 +216,15 @@ docker tag nlesc/spot registry.heroku.com/nlesc-spot/dev
 docker push registry.heroku.com/nlesc-spot/dev
 
 
+## Python
 
-
-# Python
-
-## Http server
+### Http server
 
 ```bash
 python3 -m http.server --directory ./ 8080
 ```
 
-## Pyenv installation (Archlinux)
+### Pyenv installation (Archlinux)
 
 ```bash
 yay -S pyenv
@@ -224,8 +234,9 @@ pyenv global 3.7.2
 pip install --upgrade pip
 ```
 
-## Virtual environment
-### venv
+### Virtual environment
+
+#### venv
 
 ```bash
 python3 -m venv .venv
@@ -234,7 +245,7 @@ python3 -m venv .venv
 pip install --upgrade pip
 ```
 
-### pipenv
+#### pipenv
 
 ```bash
 pip install -U pipenv
@@ -243,83 +254,85 @@ pipenv install
 ```
 [Quick tutorial](https://hackernoon.com/reaching-python-development-nirvana-bb5692adf30c?gi=1588ba978f78)
 
-### Use virtualenvironment in Visual studio code
+#### Use virtualenvironment in Visual studio code
 
 [https://code.visualstudio.com/docs/python/environments](https://code.visualstudio.com/docs/python/environments)
 
-### Clear variable on IPython/Jupyter
+#### Clear variable on IPython/Jupyter
 
 ```python
 %reset
 %reset_selective variable_name
 ```
 
-### Upgrade outdated Python packages
+#### Upgrade outdated Python packages
+
 ```bash
 pip install $(pip list --outdated | awk 'NR>2 { print $1 }') --upgrade
 ```
 
-### Anaconda
+#### Anaconda
 
-Create an environment
+##### Create an environment
 
-```
+```bash
 conda create -n nso python=3.7 pandas
 ```
 
-Export environment 
+##### Export environment 
 
-```
+```bash
 conda env export -c conda-forge -n nso --override-channels | grep -v "^prefix: "  > environment.yml
 ```
 
-List environments
+##### List environments
 
-```
+```bash
 conda env list
 ```
 
-Create an environment from a file
+##### Create an environment from a file
 
-```
+```bash
 conda env create -f environment.yml
 ```
 
-Deactivate an environment
+##### Deactivate an environment
 
-```
+```bash
 conda deactivate
 ```
 
-Remove the environment
+##### Remove the environment
 
-```
+```bash
 conda env remove -n nso
 ```
 
-# Nodejs
+## Nodejs
 
-## Update outdated packages
+### Update outdated packages
+
 ```bash
 npm i -g npm-check-updates && ncu -u && npm i
 ```
 
+## GNOME
 
-# GNOME
-## Set Nautilus as default file manager
+### Set Nautilus as default file manager
 
 ```bash
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
 ```
 
-## add Desktop bookmark to nautilus (files)
+### add Desktop bookmark to nautilus (files)
 
 ```bash
 gsettings set org.gnome.desktop.background show-desktop-icons true
 gsettings set org.gnome.desktop.background draw-background true
 ```
 
-# Xterm
+## Xterm
 
 Start xterm with a proper font.
 
@@ -327,7 +340,7 @@ Start xterm with a proper font.
 xterm -fa 'Monospace' -fs 15
 ```
 
-# UFW
+## UFW
 
 ```bash
 sudo ufw enable
@@ -337,4 +350,42 @@ sudo ufw allow 443/tcp
 sudo ufw allow 22
 sudo ufw logging on
 sudo ufw status
+```
+
+## Systemd
+
+### list targets
+
+```bash
+systemctl list-units -t target --all
+```
+
+### get default target
+
+```bash
+systemctl get-default
+```
+
+### see what target needs
+
+```bash
+systemctl show -p "Wants" graphical.target
+```
+
+### show enabled services
+
+```bash
+systemctl list-unit-files --state enabled
+```
+
+### show failed services
+
+```bash
+systemctl list-units --failed
+```
+
+### show logs of a service
+
+```bash
+journalctl -u optimus-manager.service
 ```
