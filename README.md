@@ -2,6 +2,14 @@
 
 Tips &amp; Tricks to help my fish memory and not to google the same stuff over and over again.
 
+## Shell
+
+### Find and replace in many files
+
+```
+grep -iR 'search' | xargs sed -i 's/search/replace/g'
+```
+
 ## Git
 
 ### Undo last commit
