@@ -2,6 +2,14 @@
 
 Tips &amp; Tricks to help my fish memory and not to google the same stuff over and over again.
 
+## Networking
+
+### List active tcp ports
+
+```
+watch ss -antlp
+```
+
 ## Shell
 
 ### Find and replace in many files
